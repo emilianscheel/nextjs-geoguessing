@@ -10,6 +10,7 @@
   "dependencies": {
     "next": "^12.1.0",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "react-mapillary": "^0.0.9"
   }
 }
