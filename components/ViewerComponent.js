@@ -1,4 +1,4 @@
-import { Viewer, ViewerOptions } from 'mapillary-js';
+import { Viewer } from 'mapillary-js';
 
 export default class ViewerComponent extends React.Component {
   constructor(props) {

@@ -14,6 +14,10 @@ export default function Page({ accessToken, imageId, coordinates }) {
 }
 
 export function getServerSideProps() {
+
+
+  const 
+
   return {
     props: {
       accessToken: 'MLY|4924225717699056|d997e3f37309c2f4c26231bbe09ea306',
