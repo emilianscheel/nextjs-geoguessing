@@ -1,4 +1,18 @@
 import { Viewer } from 'mapillary-js';
+import React from 'react';
+
+export default function ViewerComponent() {
+
+  this.viewer = new Viewer({
+    accessToken: props.accessToken,
+    container: containerRef.current,
+    imageId: .props.imageId,
+  });
+
+  return (
+
+  )
+}
 
 export default class ViewerComponent extends React.Component {
   constructor(props) {

@@ -1,5 +1,7 @@
+import Link from 'next/dist/client/link';
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
+import Icon from '../components/reusable/Icon';
+import styles from '../styles/Home.module.scss';
 
 export default function Home() {
   return (
@@ -12,16 +14,18 @@ export default function Home() {
         <h1 className={styles.title}>GeoGuessr</h1>
 
         <div className={styles.grid}>
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Singleplayer &rarr;</h3>
+          <a href="/guessing" className={styles.card}>
+            <h3>
+              <Icon src="/icons/multiplayer.svg" />
+              Singleplayer &rarr;
+            </h3>
             <p>Learn about Next.js in an interactive course with quizzes!</p>
           </a>
 
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Multiplayer &rarr;</h3>
+          <a href="/guessing" className={styles.card}>
+            <h3>
+              <Icon src="/icons/multiplayer.svg" /> Multiplayer &rarr;
+            </h3>
             <p>
               Instantly deploy your Next.js site to a public URL with Vercel.
             </p>

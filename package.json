@@ -8,10 +8,14 @@
     "start": "next start"
   },
   "dependencies": {
+    "external-svg-loader": "^1.4.0",
     "mapillary-js": "^4.1.0",
     "next": "^12.1.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-mapillary": "^0.0.9"
+  },
+  "devDependencies": {
+    "sass": "^1.49.9"
   }
 }
