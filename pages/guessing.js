@@ -5,18 +5,19 @@ import getImageCoordinates from '../lib/mapillary';
 import GeoJSON from 'ol/format/GeoJSON';
 import Feature from 'ol/Feature';
 import { Map } from '../components/map';
+import Button from '../components/reusable/Button';
 
 export default function Page({ accessToken, imageId, coordinates }) {
   const [selectedCoordinates, setSelectedCoordinates] = useState([]);
 
-  console.log('guessing.js', selectedCoordinates);
-
   return (
     <>
-      {/*<ViewerComponent accessToken={accessToken} imageId={imageId} />*/}
+      <ViewerComponent accessToken={accessToken} imageId={imageId} />
       <Map
         refCoordinates={(coordinates) => setSelectedCoordinates(coordinates)}
       />
+
+      <Button title='Tap "Space" to switch between maps.' />
     </>
   );
 }
