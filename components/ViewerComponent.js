@@ -1,40 +1,17 @@
 import { Viewer } from 'mapillary-js';
 import React from 'react';
+import { useEffect } from 'react';
 
-export default function ViewerComponent() {
+export default function ViewerComponent({ accessToken, imageId }) {
+  let containerRef = React.createRef();
 
-  this.viewer = new Viewer({
-    accessToken: props.accessToken,
-    container: containerRef.current,
-    imageId: .props.imageId,
+  useEffect(() => {
+    let viewer = new Viewer({
+      accessToken: accessToken,
+      container: containerRef.current,
+      imageId: imageId,
+    });
   });
 
-  return (
-
-  )
-}
-
-export default class ViewerComponent extends React.Component {
-  constructor(props) {
-    super(props);
-    this.containerRef = React.createRef();
-  }
-
-  componentDidMount() {
-    this.viewer = new Viewer({
-      accessToken: this.props.accessToken,
-      container: this.containerRef.current,
-      imageId: this.props.imageId,
-    });
-  }
-
-  componentWillUnmount() {
-    if (this.viewer) {
-      this.viewer.remove();
-    }
-  }
-
-  render() {
-    return <div ref={this.containerRef} style={this.props.style} />;
-  }
+  return <div ref={containerRef} style={{ width: '100%', height: '100%' }} />;
 }
