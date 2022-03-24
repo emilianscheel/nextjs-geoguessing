@@ -12,10 +12,12 @@ export const MapContext = React.createContext(undefined);
 export class MapComponent extends React.PureComponent {
   mapDivRef;
   state = {};
+  refCoordinates;
 
   constructor(props) {
     super(props);
     this.mapDivRef = React.createRef();
+    this.refCoordinates = this.props.refCoordinates;
   }
 
   componentDidMount() {
@@ -49,7 +51,7 @@ export class MapComponent extends React.PureComponent {
       <div className="map" ref={this.mapDivRef}>
         {this.state.mapContext && (
           <MapContext.Provider value={this.state.mapContext}>
-            <VectorLayer />
+            <VectorLayer refCoordinates={this.refCoordinates} />
           </MapContext.Provider>
         )}
       </div>

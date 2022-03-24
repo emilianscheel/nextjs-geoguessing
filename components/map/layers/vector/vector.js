@@ -13,6 +13,12 @@ import { MapContext } from '../../map';
 class VectorLayerComponent extends React.PureComponent {
   layer;
   source;
+  refCoordinates;
+
+  constructor(props) {
+    super(props);
+    this.refCoordinates = this.props.refCoordinates;
+  }
 
   componentDidMount() {
     this.source = new VectorSource({
@@ -45,6 +51,7 @@ class VectorLayerComponent extends React.PureComponent {
     const featureToAdd = new Feature({
       geometry: new Point(event.coordinate),
     });
+    this.refCoordinates(event.coordinate);
     const style = new Style({
       image: new Circle({
         radius: 6,
@@ -61,12 +68,11 @@ class VectorLayerComponent extends React.PureComponent {
   };
 
   render() {
-    return <div></div>;
+    return null;
   }
 }
 
 export const VectorLayerWithContext = (props) => {
-  console.log(props);
   return (
     <MapContext.Consumer>
       {(mapContext) => {
