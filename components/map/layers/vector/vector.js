@@ -22,10 +22,12 @@ class VectorLayerComponent extends React.PureComponent {
 
   componentDidMount() {
     this.source = new VectorSource({
+      projection: 'EPSG:4326',
       features: undefined,
     });
 
     this.layer = new VectorLayer({
+      projection: 'EPSG:4326',
       source: this.source,
     });
 
@@ -77,7 +79,6 @@ export const VectorLayerWithContext = (props) => {
     <MapContext.Consumer>
       {(mapContext) => {
         if (mapContext) {
-          console.log(mapContext);
           return <VectorLayerComponent {...props} map={mapContext.map} />;
         }
       }}

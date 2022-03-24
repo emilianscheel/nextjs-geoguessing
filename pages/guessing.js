@@ -2,23 +2,64 @@ import React, { useState, useEffect } from 'react';
 import MapWrapper from '../components/MapWrapper';
 import ViewerComponent from '../components/ViewerComponent';
 import getImageCoordinates from '../lib/mapillary';
-import GeoJSON from 'ol/format/GeoJSON';
-import Feature from 'ol/Feature';
 import { Map } from '../components/map';
 import Button from '../components/reusable/Button';
+import styles from '../styles/Guessing.module.scss';
+import Overlay from '../components/reusable/Overlay';
+import { calculateDistance } from '../lib/distance';
 
 export default function Page({ accessToken, imageId, coordinates }) {
-  const [selectedCoordinates, setSelectedCoordinates] = useState([]);
+  const [page, setPage] = useState('map');
+
+  const [selectedCoordinates, setSelectedCoordinates] = useState(null);
+
+  const onClick = (event) => {
+    event.preventDefault();
+    if (event.code === 'Space')
+      setPage(page === 'mapillary' ? 'map' : 'mapillary');
+  };
+
+  const onSelectLocation = (event) => {
+    event.preventDefault();
+
+    if (!selectedCoordinates) return;
+
+    // setSelectedCoordinates
+    console.log('selectedCoordinates', selectedCoordinates);
+    // coordinates
+    console.log('coordinates', coordinates.geometry.coordinates);
+
+    // calculate distance
+
+    let distance = calculateDistance(
+      selectedCoordinates[0],
+      coordinates.geometry.coordinates[0],
+      selectedCoordinates[1],
+      coordinates.geometry.coordinates[1]
+    );
+
+    console.log('distance', distance + ' m');
+  };
 
   return (
-    <>
-      <ViewerComponent accessToken={accessToken} imageId={imageId} />
-      <Map
-        refCoordinates={(coordinates) => setSelectedCoordinates(coordinates)}
-      />
+    <main className={styles['container_' + page]} onKeyDown={onClick}>
+      <div className={styles.mapillary_container}>
+        <ViewerComponent accessToken={accessToken} imageId={imageId} />
+      </div>
+      <div className={styles.map_container}>
+        <Map
+          refCoordinates={(coordinates) => setSelectedCoordinates(coordinates)}
+        />
+      </div>
 
-      <Button title='Tap "Space" to switch between maps.' />
-    </>
+      <div className={styles.middle_buttons}>
+        <Button onClick={onSelectLocation} title="Select location" />
+      </div>
+
+      <div className={styles.right_buttons}>
+        <Overlay text='Switch views by tapping "Space"' />
+      </div>
+    </main>
   );
 }
 
