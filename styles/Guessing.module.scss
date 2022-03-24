@@ -5,6 +5,7 @@
   height: 100%;
   left: 0;
   top: 0;
+  transition: 0.4s ease;
 }
 
 .container_map {
@@ -15,6 +16,7 @@
   .map_container {
     opacity: 1;
     z-index: 1000;
+    transform: scale(1);
   }
 }
 
@@ -26,6 +28,7 @@
   .map_container {
     opacity: 0;
     z-index: 999;
+    transform: scale(1.5);
   }
   .middle_buttons {
     display: none;

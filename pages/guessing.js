@@ -15,8 +15,7 @@ export default function Page({ accessToken, imageId, coordinates }) {
 
   const onClick = (event) => {
     event.preventDefault();
-    if (event.code === 'Space')
-      setPage(page === 'mapillary' ? 'map' : 'mapillary');
+    setPage(page === 'mapillary' ? 'map' : 'mapillary');
   };
 
   const onSelectLocation = (event) => {
@@ -57,7 +56,7 @@ export default function Page({ accessToken, imageId, coordinates }) {
       </div>
 
       <div className={styles.right_buttons}>
-        <Overlay text='Switch views by tapping "Space"' />
+        <Overlay onClick={onClick} text='Switch views by tapping "Space"' />
       </div>
     </main>
   );
