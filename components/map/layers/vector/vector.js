@@ -9,8 +9,6 @@ import Circle from 'ol/style/Circle';
 import Fill from 'ol/style/Fill';
 import Stroke from 'ol/style/Stroke';
 import { MapContext } from '../../map';
-import { IMapContext } from '../../map-types';
-import { TVectorLayerProps, TVectorLayerComponentProps } from './vector-types';
 
 class VectorLayerComponent extends React.PureComponent {
   layer;
@@ -63,7 +61,7 @@ class VectorLayerComponent extends React.PureComponent {
   };
 
   render() {
-    return null;
+    return <div></div>;
   }
 }
 

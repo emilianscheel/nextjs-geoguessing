@@ -5,7 +5,7 @@ import TileLayer from 'ol/layer/Tile';
 import XYZ from 'ol/source/XYZ';
 import { VectorLayer } from './layers';
 import 'ol/ol.css';
-import './map.css';
+import './map.module.css';
 
 export const MapContext = React.createContext(undefined);
 
