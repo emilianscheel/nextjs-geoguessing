@@ -1,9 +1,14 @@
 import Link from 'next/dist/client/link';
 import Head from 'next/head';
+import Router from 'next/router';
 import Icon from '../components/reusable/Icon';
 import styles from '../styles/Home.module.scss';
 
 export default function Home() {
+  Router.onRouteChangeComplete = () => {
+    console.log('ready');
+  };
+
   return (
     <div className={styles.container}>
       <Head>

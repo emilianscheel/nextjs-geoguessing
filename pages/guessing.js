@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import MapWrapper from '../components/MapWrapper';
+import Router, { useRouter } from 'next/router';
 import ViewerComponent from '../components/ViewerComponent';
 import getImageCoordinates from '../lib/mapillary';
 import { Map } from '../components/map';
@@ -7,6 +8,7 @@ import Button from '../components/reusable/Button';
 import styles from '../styles/Guessing.module.scss';
 import Overlay from '../components/reusable/Overlay';
 import { calculateDistance } from '../lib/distance';
+import Countdown from '../components/Countdown';
 
 export default function Page({ accessToken, imageId, coordinates }) {
   const [page, setPage] = useState('map');
@@ -42,6 +44,8 @@ export default function Page({ accessToken, imageId, coordinates }) {
 
   return (
     <main className={styles['container_' + page]} onKeyDown={onClick}>
+      <Countdown />
+
       <div className={styles.mapillary_container}>
         <ViewerComponent accessToken={accessToken} imageId={imageId} />
       </div>
