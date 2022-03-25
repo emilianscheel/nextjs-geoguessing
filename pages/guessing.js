@@ -79,7 +79,16 @@ export default function Page({ accessToken, imageId, coordinates }) {
 }
 
 export async function getServerSideProps() {
-  const imageIds = ['498763468214164'];
+  const imageIds = [
+    '498763468214164',
+    '207693204499600',
+    '457576372533427',
+    '1960511437444668',
+    '137588811859150',
+    '798023094167537',
+    '291528779338397',
+    '469105011037391',
+  ];
 
   let randomImage = imageIds[Math.floor(Math.random() * imageIds.length)];
 

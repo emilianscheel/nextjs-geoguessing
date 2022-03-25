@@ -25,9 +25,6 @@ export default function Home() {
                 <Icon src="/icons/multiplayer.svg" />
                 Singleplayer &rarr;
               </h3>
-              <p>
-                Instantly deploy your Next.js site to a public URL with Vercel.
-              </p>
             </a>
           </Link>
 
@@ -36,9 +33,6 @@ export default function Home() {
               <h3>
                 <Icon src="/icons/multiplayer.svg" /> Multiplayer &rarr;
               </h3>
-              <p>
-                Instantly deploy your Next.js site to a public URL with Vercel.
-              </p>
             </a>
           </Link>
         </div>
