@@ -19,22 +19,28 @@ export default function Home() {
         <h1 className={styles.title}>GeoGuessr</h1>
 
         <div className={styles.grid}>
-          <a href="/guessing" className={styles.card}>
-            <h3>
-              <Icon src="/icons/multiplayer.svg" />
-              Singleplayer &rarr;
-            </h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+          <Link href="/guessing" className={styles.card}>
+            <a className={styles.card}>
+              <h3>
+                <Icon src="/icons/multiplayer.svg" />
+                Singleplayer &rarr;
+              </h3>
+              <p>
+                Instantly deploy your Next.js site to a public URL with Vercel.
+              </p>
+            </a>
+          </Link>
 
-          <a href="/guessing" className={styles.card}>
-            <h3>
-              <Icon src="/icons/multiplayer.svg" /> Multiplayer &rarr;
-            </h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+          <Link href="/guessing">
+            <a className={styles.card}>
+              <h3>
+                <Icon src="/icons/multiplayer.svg" /> Multiplayer &rarr;
+              </h3>
+              <p>
+                Instantly deploy your Next.js site to a public URL with Vercel.
+              </p>
+            </a>
+          </Link>
         </div>
       </main>
     </div>

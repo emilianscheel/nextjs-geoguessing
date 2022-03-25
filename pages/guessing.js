@@ -11,7 +11,7 @@ import { calculateDistance } from '../lib/distance';
 import Countdown from '../components/Countdown';
 
 export default function Page({ accessToken, imageId, coordinates }) {
-  const [page, setPage] = useState('map');
+  const [page, setPage] = useState('mapillary');
 
   const [selectedCoordinates, setSelectedCoordinates] = useState(null);
 
@@ -44,7 +44,7 @@ export default function Page({ accessToken, imageId, coordinates }) {
 
   return (
     <main className={styles['container_' + page]} onKeyDown={onClick}>
-      <Countdown />
+      <Countdown seconds={3.5} />
 
       <div className={styles.mapillary_container}>
         <ViewerComponent accessToken={accessToken} imageId={imageId} />
@@ -60,7 +60,7 @@ export default function Page({ accessToken, imageId, coordinates }) {
       </div>
 
       <div className={styles.right_buttons}>
-        <Overlay onClick={onClick} text='Switch views by tapping "Space"' />
+        <Button onClick={onClick} title="Map" icon="/icons/location.svg" />
       </div>
     </main>
   );

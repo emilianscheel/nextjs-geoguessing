@@ -9,6 +9,7 @@ import Circle from 'ol/style/Circle';
 import Fill from 'ol/style/Fill';
 import Stroke from 'ol/style/Stroke';
 import { MapContext } from '../../map';
+import Icon from 'ol/style/Icon';
 
 class VectorLayerComponent extends React.PureComponent {
   layer;
@@ -55,15 +56,18 @@ class VectorLayerComponent extends React.PureComponent {
     });
     this.refCoordinates(event.coordinate);
     const style = new Style({
-      image: new Circle({
+      image: new Icon({
+        src: '/icons/location.svg',
+      }),
+    });
+    /*new Circle({
         radius: 6,
         fill: new Fill({ color: 'red' }),
         stroke: new Stroke({
           color: [0, 0, 0],
           width: 2,
         }),
-      }),
-    });
+      }), */
     featureToAdd.setStyle(style);
     this.source.clear();
     this.source.addFeatures([featureToAdd]);
