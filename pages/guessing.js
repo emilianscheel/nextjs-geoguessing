@@ -9,9 +9,12 @@ import styles from '../styles/Guessing.module.scss';
 import Overlay from '../components/reusable/Overlay';
 import { calculateDistance } from '../lib/distance';
 import Countdown from '../components/Countdown';
+import Endscreen from '../components/Endscreen';
 
 export default function Page({ accessToken, imageId, coordinates }) {
   const [page, setPage] = useState('mapillary');
+
+  const [data, setData] = useState({ show: false });
 
   const [selectedCoordinates, setSelectedCoordinates] = useState(null);
 
@@ -40,11 +43,20 @@ export default function Page({ accessToken, imageId, coordinates }) {
     );
 
     console.log('distance', distance + ' m');
+
+    const data = {
+      distance,
+      show: true,
+    };
+
+    setData(data);
   };
 
   return (
     <main className={styles['container_' + page]} onKeyDown={onClick}>
       <Countdown seconds={3.5} />
+
+      <Endscreen show={data.show} data={data} />
 
       <div className={styles.mapillary_container}>
         <ViewerComponent accessToken={accessToken} imageId={imageId} />
