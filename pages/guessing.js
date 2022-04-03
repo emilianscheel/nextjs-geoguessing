@@ -10,6 +10,7 @@ import Overlay from '../components/reusable/Overlay';
 import { calculateDistance } from '../lib/distance';
 import Countdown from '../components/Countdown';
 import Endscreen from '../components/Endscreen';
+import Head from 'next/head';
 
 export default function Page({ accessToken, imageId, coordinates }) {
   const [page, setPage] = useState('mapillary');
@@ -49,31 +50,49 @@ export default function Page({ accessToken, imageId, coordinates }) {
       show: true,
     };
 
+    setPage('endscreen');
     setData(data);
   };
 
   return (
     <main className={styles['container_' + page]} onKeyDown={onClick}>
+      <Head>
+        <title>GeoGuessr</title>
+      </Head>
       <Countdown seconds={3.5} />
 
-      <Endscreen show={data.show} data={data} />
+      <Endscreen
+        show={data.show}
+        data={data}
+        className={styles.endscreen_container}
+        retryClick={() => {
+          setPage('map');
+          let _data = data;
+          _data.show = false;
+          setData(data);
+        }}
+      />
 
       <div className={styles.mapillary_container}>
         <ViewerComponent accessToken={accessToken} imageId={imageId} />
       </div>
-      <div className={styles.map_container}>
+      <div className={`${styles.map_container}`}>
         <Map
           refCoordinates={(coordinates) => setSelectedCoordinates(coordinates)}
         />
       </div>
 
-      <div className={styles.middle_buttons}>
-        <Button onClick={onSelectLocation} title="Select location" />
-      </div>
+      {page !== 'endscreen' && (
+        <div className={styles.middle_buttons}>
+          <Button onClick={onSelectLocation} title="Select location" />
+        </div>
+      )}
 
-      <div className={styles.right_buttons}>
-        <Button onClick={onClick} title="Map" icon="/icons/location.svg" />
-      </div>
+      {page !== 'endscreen' && (
+        <div className={styles.right_buttons}>
+          <Button onClick={onClick} title="Map" icon="/icons/map.svg" />
+        </div>
+      )}
     </main>
   );
 }

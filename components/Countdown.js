@@ -25,7 +25,7 @@ export default function Countdown({ seconds }) {
             <div className={styles.demo__colored_block}></div>
           </div>
           <div className={styles.demo__colored_blocks_inner}></div>
-          <div className={styles.demo__text}>Ready</div>
+          <div className={styles.demo__text}>Start</div>
         </div>
         <div className={styles.demo__inner}>
           <svg className={styles.demo__numbers} viewBox="0 0 100 100">

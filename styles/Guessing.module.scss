@@ -17,6 +17,12 @@
     opacity: 1;
     z-index: 1000;
     transform: scale(1);
+    filter: brightness(1);
+  }
+  .endscreen_container {
+    transform: translateY(-800px);
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
   }
 }
 
@@ -32,6 +38,22 @@
   }
   .middle_buttons {
     display: none;
+  }
+  .endscreen_container {
+    transform: translateY(-800px);
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+  }
+}
+
+.container_endscreen {
+  .map_container {
+    filter: brightness(0.8);
+    transition: 0.4s ease;
+  }
+  .endscreen_container {
+    transform: translateY(0px);
+    transition: 0.4s ease;
   }
 }
 
