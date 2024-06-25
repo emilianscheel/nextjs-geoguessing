@@ -15,6 +15,7 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-mapillary": "^0.0.9",
+    "react-toastify": "^9.0.3",
     "typescript": "^4.6.2"
   },
   "devDependencies": {
