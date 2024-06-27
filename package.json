@@ -16,9 +16,11 @@
     "react-dom": "17.0.1",
     "react-mapillary": "^0.0.9",
     "react-toastify": "^9.0.3",
+    "swr": "^2.2.5",
     "typescript": "^4.6.2"
   },
   "devDependencies": {
+    "@types/react": "^18.3.3",
     "sass": "^1.49.9"
   }
 }

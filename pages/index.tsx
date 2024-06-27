@@ -5,10 +5,6 @@ import Icon from "../components/reusable/Icon";
 import styles from "../styles/Home.module.scss";
 
 export default function Home() {
-    Router.onRouteChangeComplete = () => {
-        console.log("ready");
-    };
-
     return (
         <div className={styles.container}>
             <Head>

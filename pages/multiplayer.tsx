@@ -13,20 +13,20 @@ const generateKey = () => {
 
 export default function MultiplayerPage() {
     const router = useRouter();
-    const [key, setKey] = useState("");
-    const [newKey, setNewKey] = useState(generateKey());
+    const [roomId, setRoomId] = useState("");
+    const [newRoomId] = useState(generateKey());
 
     function joinGame() {
-        router.push(`/guessing?key=${key}`);
+        router.push(`/guessing?roomId=${roomId}&userId=${generateKey()}}`);
     }
 
     function createGame() {
-        navigator.clipboard.writeText(newKey);
+        navigator.clipboard.writeText(newRoomId.toString());
         toast.success("Code wurde erfolgreich kopiert");
     }
 
     function startGame() {
-        router.push(`/guessing?key=${key}`);
+        router.push(`/guessing?roomId=${newRoomId}&userId=${generateKey()}`);
     }
 
     return (
@@ -43,7 +43,7 @@ export default function MultiplayerPage() {
                     <div className={styles.group}>
                         <Input
                             type="number"
-                            onChange={(event) => setKey(event.target.value)}
+                            onChange={(event) => setRoomId(event.target.value)}
                         />
 
                         <div onClick={joinGame} className={styles.card}>
@@ -55,7 +55,7 @@ export default function MultiplayerPage() {
                     </div>
 
                     <div className={styles.group}>
-                        <h1 className={styles.key}>{newKey}</h1>
+                        <h1 className={styles.key}>{newRoomId}</h1>
 
                         <div onClick={createGame} className={styles.card}>
                             <h3>
