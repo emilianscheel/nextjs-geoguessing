@@ -1,15 +1,18 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { results, Result } from "./join";
+import { getResults } from "../../../../lib/queries";
+import { Result } from "../../../../lib/types";
 
 type ResponseData = Result[];
 
-export default function handler(
+export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>,
 ) {
     const { userId, roomId } = req.query;
 
-    const filteredResults = results.filter(
+    const results = await getResults();
+
+    const filteredResults = results?.filter(
         (result) => result.userId === userId && result.roomId === roomId,
     );
 

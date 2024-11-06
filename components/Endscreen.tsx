@@ -7,20 +7,20 @@ import { fetcher } from "../pages/guessing";
 import { Result } from "../pages/api/[userId]/[roomId]/join";
 
 type ResultCardProps = {
-    result: Result
-}
+    result: Result;
+};
 
-const ResultCard = ({
-    result
-}: ResultCardProps) => {
+const ResultCard = ({ result }: ResultCardProps) => {
+    return <div>{result.distance}</div>;
+};
 
-    return (
-        <div>
-            {result.}
-        </div>
-    )
-}
+type ResultContanerProps = {
+    children: React.ReactNode;
+};
 
+const ResultContainer = ({ children }: ResultContanerProps) => {
+    return <div>{children}</div>;
+};
 
 export default function Endscreen({ data, className, retryClick }) {
     const router = useRouter();
@@ -39,8 +39,9 @@ export default function Endscreen({ data, className, retryClick }) {
 
     return (
         <div
-            className={`${styles.endscreen_container} ${data.show ? styles.show : styles.hide
-                } ${className}`}
+            className={`${styles.endscreen_container} ${
+                data.show ? styles.show : styles.hide
+            } ${className}`}
         >
             <div className={styles.box}>
                 <p className={styles.description}>Die Entfernung beträgt ...</p>
@@ -48,9 +49,9 @@ export default function Endscreen({ data, className, retryClick }) {
                     {Math.round(data.distance / 1000)} km
                 </h3>
 
-                {results?.map(() =>
-
-                )}
+                <ResultContainer>
+                    {results?.map((result) => <ResultCard result={results} />)}
+                </ResultContainer>
 
                 <Button
                     onClick={onClick}

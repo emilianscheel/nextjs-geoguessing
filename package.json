@@ -1,26 +1,33 @@
 {
-  "name": "next-app",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "external-svg-loader": "^1.4.0",
-    "mapillary-js": "^4.1.0",
-    "next": "^12.1.0",
-    "ol": "^6.13.0",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "react-mapillary": "^0.0.9",
-    "react-toastify": "^9.0.3",
-    "swr": "^2.2.5",
-    "typescript": "^4.6.2"
-  },
-  "devDependencies": {
-    "@types/react": "^18.3.3",
-    "sass": "^1.49.9"
-  }
+    "name": "next-app",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "init-db": "tsx lib/init-db.ts",
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start"
+    },
+    "dependencies": {
+        "better-sqlite3": "^11.0.0",
+        "external-svg-loader": "^1.4.0",
+        "mapillary-js": "^4.1.0",
+        "next": "^12.1.0",
+        "ol": "^6.13.0",
+        "react": "17.0.1",
+        "react-dom": "17.0.1",
+        "react-mapillary": "^0.0.9",
+        "react-toastify": "^9.0.3",
+        "sqlite": "^5.1.1",
+        "sqlite3": "^5.1.7",
+        "swr": "^2.2.5",
+        "typescript": "^4.6.2"
+    },
+    "devDependencies": {
+        "@types/react": "^18.3.3",
+        "@types/sqlite3": "^3.1.11",
+        "sass": "^1.49.9",
+        "tsx": "^4.15.7"
+    }
 }

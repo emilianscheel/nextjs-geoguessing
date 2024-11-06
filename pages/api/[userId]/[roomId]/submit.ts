@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import { getResults, submitResult } from "../../../../lib/queries";
 import { results } from "./join";
 
 type ResponseData = {
@@ -9,20 +10,13 @@ export default function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>,
 ) {
-    const { userId, roomId } = req.query;
+    const { userId, roomId } = req.query as { userId: string; roomId: string };
     const { distance } = req.body;
 
-    const newResult = {
-        userId: userId as string,
-        roomId: roomId as string,
-        distance: parseInt(distance as string),
-    };
+    submitResult(userId, roomId, distance);
 
-    results.push(newResult);
-
-    console.log("newResult", newResult);
-
+    const results = getResults();
     console.log("results", results);
 
-    res.status(200).json({ message: "Room is available" });
+    res.status(200).json({ message: "Result submitted" });
 }

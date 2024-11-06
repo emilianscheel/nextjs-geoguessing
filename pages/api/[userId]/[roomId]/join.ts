@@ -1,18 +1,17 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import { joinRoom } from "../../../../lib/queries";
 
 type ResponseData = {
     message: string;
 };
 
-type;
-
-export default function handler(
+export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>,
 ) {
-    const { userId, roomId } = req.query;
+    const { userId, roomId } = req.query as { userId: string; roomId: string };
 
-    const existingRoom = results;
+    await joinRoom(userId, roomId);
 
-    res.status(200).json({ message: "Room is available" });
+    res.status(200).json({ message: "User joined Room" });
 }
